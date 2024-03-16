@@ -34,6 +34,12 @@ class Products(models.Model):
     price = models.IntegerField(default=0)
 
 
+class New_Products(models.Model):
+    image = models.ImageField(upload_to='product_photo/')
+    title = models.CharField(max_length=55)
+    price = models.IntegerField(default=0)
+
+
 class Treding_ats(models.Model):
     image = models.ImageField(upload_to='tredign_photo/')
     title = models.CharField(max_length=55)
