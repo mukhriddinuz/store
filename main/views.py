@@ -3,7 +3,7 @@ from .models import *
 
 def index_view(request):
     contex = {
-        'banner':Banner.objects.all().order_by('-id')[:3],
+        'banner':Banner.objects.all().order_by('-id')[:2],
         'shop_collection':Shop_colloection.objects.all().order_by('-id')[:9],
         'products':Products.objects.all().order_by('-id')[:8],
         'new_products':New_Products.objects.all().order_by('-id')[:6],
