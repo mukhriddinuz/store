@@ -38,17 +38,6 @@
         <li><a href="{% url 'index_url' %}">Home</a></li>
         <li><a href="{% url 'product_url' %}">Products</a></li>
 
-        <li>
-          <a href="" class="desktop-item">Page <span><i class="fas fa-chevron-down"></i></span></a>
-          <input type="checkbox" id="showdrop2" />
-          <label for="showdrop2" class="mobile-item">Page <span><i class="fas fa-chevron-down"></i></span></label>
-          <ul class="drop-menu2">
-            <li><a href="">About</a></li>
-            <li><a href="">Contact</a></li>
-            <li><a href="">Faq</a></li>
-            <li><a href="">Page 404</a></li>
-          </ul>
-        </li>
         <!-- icons -->
         <li class="icons">
             {% if user.is_authenticated %}
