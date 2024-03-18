@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 
+
 def index_view(request):
     banner = Products.objects.filter(is_banner=True).order_by('-id')[:3]
     shop_collections = Products.objects.filter(shop_collections=True).order_by('-id')[:6]
@@ -26,6 +27,7 @@ def index_view(request):
         'basket_count': basket_count
     }
     return render(request, "index.html", contex)
+
 
 def product_detail(request, pk):
     product = Products.objects.get(pk=pk)
@@ -53,6 +55,7 @@ def product(request):
     }
     return render(request, "products.html", context)
 
+
 @login_required(login_url='/login/')
 def add_basket(request, pk):
     if request.user.is_authenticated:
@@ -65,7 +68,6 @@ def add_basket(request, pk):
         product=product,
     )
     return HttpResponse("Item added to basket successfully!")
-
 
 
 @login_required(login_url='/login/')
@@ -83,12 +85,12 @@ def add_basket_form(request, pk):
         )
     return redirect('product_detail_url', pk=pk)
 
+
 @login_required(login_url='/login/')
 def remove_cart_product(request, pk):
     basket = Basket.objects.get(pk=pk)
     basket.delete()
     return redirect('cart_url', pk=request.user.id)
-
 
 
 @login_required(login_url='/login/')
