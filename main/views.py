@@ -24,7 +24,8 @@ def index_view(request):
         'is_advert': is_advert,
         'brand': Brand.objects.all().order_by('-id')[:7],
         'contact': Contact.objects.last(),
-        'basket_count': basket_count
+        'basket_count': basket_count,
+        'contact': Contact.objects.last(),
     }
     return render(request, "index.html", contex)
 
@@ -51,7 +52,8 @@ def product(request):
         'product':product,
         'category':category,
         'brand':brand,
-        'basket_count':basket_count
+        'basket_count':basket_count,
+        'contact': Contact.objects.last(),
     }
     return render(request, "products.html", context)
 
@@ -108,6 +110,7 @@ def cart(request, pk):
         'subtotal': subtotal,
         'tax': tax,
         'total': total,
+        'contact': Contact.objects.last(),
     }
     return render(request, 'cart.html', context)
 
@@ -140,43 +143,43 @@ def create_total_sum(request,):
     return redirect('index_url')
 
 
-def login_view(request):
-    if request.method == "POST":
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        usr = authenticate(
-            username=username,
-            password=password
-        )
-        if usr is not None:
-            login(request, usr)
-            return redirect('index_url')
-        else:
-            context = {
-                'error': True
-            }
-            return render(request, 'login.html', context)
+# def login_view(request):
+#     if request.method == "POST":
+#         username = request.POST.get('username')
+#         password = request.POST.get('password')
+#         usr = authenticate(
+#             username=username,
+#             password=password
+#         )
+#         if usr is not None:
+#             login(request, usr)
+#             return redirect('index_url')
+#         else:
+#             context = {
+#                 'error': True
+#             }
+#             return render(request, 'login.html', context)
+#
+#     return render(request, 'login.html')
 
-    return render(request, 'login.html')
+# def sing_up_view(request):
+#     if request.method == "POST":
+#         username = request.POST.get('username')
+#         password = request.POST.get('password')
+#         if User.objects.filter(username=username).exists():
+#             context = {
+#                 'band': True,
+#             }
+#             return render(request, 'sing-up.html', context)
+#         else:
+#             User.objects.create_user(
+#                 username=username,
+#                 password=password
+#             )
+#             return redirect('index_url')
+#
+#     return render(request, 'sing-up.html')
 
-def sing_up_view(request):
-    if request.method == "POST":
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        if User.objects.filter(username=username).exists():
-            context = {
-                'band': True,
-            }
-            return render(request, 'sing-up.html', context)
-        else:
-            User.objects.create_user(
-                username=username,
-                password=password
-            )
-            return redirect('index_url')
-
-    return render(request, 'sing-up.html')
-
-def user_logout(request):
-    logout(request)
-    return redirect('index_url')
+# def user_logout(request):
+#     logout(request)
+#     return redirect('index_url')

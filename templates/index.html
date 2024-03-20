@@ -110,26 +110,28 @@
 
     <div class="product-layout">
       {% for i in new_products %}
-      <div class="product">
-        <div class="img-container">
-          <img src="{{i.image.url}}" style="height:260px; width:260px" alt="" />
-          <div class="addCart">
-            <i class="fas fa-shopping-cart" onclick="addToBasket({{ i.id }})"></i>
-          </div>
+      <div class="swiper-slide">
+            <div class="product">
+              <div class="img-container">
+                <img src="{{i.image.url}}" style="height:260px; width:260px" alt="" />
+                <div class="addCart">
+                  <i class="fas fa-shopping-cart" onclick="addToBasket({{ i.id }})"></i>
+                </div>
 
-          <ul class="side-icons">
-            <span><i class="fas fa-search"></i></span>
-            <span><i class="far fa-heart"></i></span>
-            <span><i class="fas fa-sliders-h"></i></span>
-          </ul>
-        </div>
-        <div class="bottom">
-          <a href="{% url 'product_detail_url' i.id %}">{{i.title}}</a>
-          <div class="price">
-            <span>{{i.price}}</span>
+                <ul class="side-icons">
+                  <span><i class="fas fa-search"></i></span>
+                  <span><i class="far fa-heart"></i></span>
+                  <span><i class="fas fa-sliders-h"></i></span>
+                </ul>
+              </div>
+              <div class="bottom">
+                <a href="{% url 'product_detail_url' i.id %}">{{i.title}}</a>
+                <div class="price">
+                  <span>{{i.price}} so'm</span>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
       {% endfor %}
     </div>
   </section>

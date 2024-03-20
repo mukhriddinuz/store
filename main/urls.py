@@ -11,7 +11,7 @@ urlpatterns = [
     path('add_basket/<int:pk>/', add_basket, name='add_basket_url'),
     path('add_basket_form/<int:pk>/', add_basket_form, name='add_basket_form_url'),
     path('remove_cart_product/<int:pk>/', remove_cart_product, name='remove_cart_product_url'),
-    path('login/', login_view, name='login_url'),
-    path('sing-up/', sing_up_view, name='sing_up_url'),
-    path('logout/', user_logout, name='logout_url'),
+#     path('login/', login_view, name='login_url'),
+#     path('sing-up/', sing_up_view, name='sing_up_url'),
+#     path('logout/', user_logout, name='logout_url'),
 ]
